@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!-- Test form for onboarding -->
+    <h3>New User Onboarding</h3>
+    <div id="user_onboarding">
+        <div class="form">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name" id="first_name" required />
+            <label for="last_name">Last Name: </label>
+            <input type="text" name="last_name" id="last_name" required />
+        </div>
+        <div class="form">
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" required />
+        </div>
+        <div class="form">
+            <label for="password">Password: </label>
+            <input type="text" name="password" id="password" required />
+        </div>
+        <div class="form">
+            <label for="home_loc">Home Arcade: </label>
+            <input type="text" name="home_loc" id="home_loc" />
+        </div>
+        <div class="form_submit">
+            <button onclick="onboardingAction()">Submit Onboarding</button>
+        </div>
+        <div class="form_result">
+            <u>Result: </u>
+            <div id="onboarding_result"></div>
+        </div>
+    </div>
+
+    <!-- Onboarding call -->
+    <script>
+        async function onboardingAction() {
+            const onboardingResponse = await fetch('127.0.0.1:30458/user/newuser');
+            const onboardingJson = await response.json();
+            document.getElementById("onboarding_result").innerHTML = onboardingJson;
+        }
+    </script>
+</body>
+</html>
